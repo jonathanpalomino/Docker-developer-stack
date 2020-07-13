@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  pgadmin4:
+    image: dpage/pgadmin4
+    container_name: pgadmin4
+    volumes:
+       - pgadmin4_data:/var/lib/pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "jonathan-palomino@hotmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "jonathan"
+    ports:
+      - "8999:80"
+    networks:
+      - backend
+volumes:
+  pgadmin4_data:
+    external: true
+    name:
+      pgadmin4_data
+networks: 
+  backend:
+    name: nextcloud_backend
